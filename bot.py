@@ -12,8 +12,8 @@ chat_id = os.environ['TELEGRAM_CHAT_ID']
 url = 'https://dvmn.org/api/long_polling/'
 headers = {'Authorization': f"Token {os.environ['DVMN_TOKEN']}"}
 params = {'timestamp': ""}
+logging.warning('Bot started!')
 while True:
-    logging.warning('Bot started!')
     try:
         response = requests.get(url, headers=headers, params=params)
         response.raise_for_status()
