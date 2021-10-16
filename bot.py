@@ -1,8 +1,10 @@
-import requests
-import telegram
+import logging
 import os
 from textwrap import dedent
 from time import sleep
+
+import requests
+import telegram
 
 
 bot = telegram.Bot(token=os.environ['TELEGRAM_TOKEN'])
@@ -11,6 +13,7 @@ url = 'https://dvmn.org/api/long_polling/'
 headers = {'Authorization': f"Token {os.environ['DVMN_TOKEN']}"}
 params = {'timestamp': ""}
 while True:
+    logging.warning('Bot started!')
     try:
         response = requests.get(url, headers=headers, params=params)
         response.raise_for_status()
@@ -35,7 +38,7 @@ while True:
     except requests.exceptions.ReadTimeout:
         continue
     except ConnectionError:
-        print('Connection problems!')
+        logging.warning('Connection problems!')
         sleep(1800)
         continue
     
