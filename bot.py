@@ -30,6 +30,7 @@ def main():
 
     while True:
         try:
+            0/0
             response = requests.get(url, headers=headers, params=params)
             response.raise_for_status()
             response = response.json()
@@ -59,7 +60,7 @@ def main():
             sleep(1800)
             continue
         except Exception as e:
-            logger.warning(str(e)+str(traceback.format_exc()))
+            logger.warning(f'Бот упал с ошибкой: \n{str(e)+str(traceback.format_exc())}')
             sleep(1800)
 
 
