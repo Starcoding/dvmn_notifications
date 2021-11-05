@@ -12,5 +12,7 @@
 - `TELEGRAM_CHAT_ID` - Id чата, в который бот будет отправлять оповещения  
 - `DVMN_TOKEN`- Секретный ключ сайта [dvmn.org](https://dvmn.org/)  
 
+Запустить бота командой `python bot.py`  
+
 # Деплой
 На данный момент бот развёрнут на платформе [heroku.com](https://heroku.com/)
