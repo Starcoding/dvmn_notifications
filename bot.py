@@ -30,7 +30,6 @@ def main():
 
     while True:
         try:
-            0/0
             response = requests.get(url, headers=headers, params=params)
             response.raise_for_status()
             response = response.json()
