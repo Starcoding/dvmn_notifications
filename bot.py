@@ -43,13 +43,13 @@ def main():
                     bot.send_message(chat_id=chat_id, text=dedent(f'''\
                     У вас проверили работу «{lesson_title}»
                     К сожалению, в работе нашлись ошибки.
-                    Ссылка на работу: https://dvmn.org{lesson_url}'''))
+                    Ссылка на работу: {lesson_url}'''))
                 else:
                     bot.send_message(chat_id=chat_id, text=dedent(f'''\
                     У вас проверили работу «{lesson_title}»
                     Преподавателю всё понравилось, можно приступать к \
                     следующему уроку!
-                    Ссылка на работу: https://dvmn.org{lesson_url}'''))
+                    Ссылка на работу: {lesson_url}'''))
             else:
                 params['timestamp'] = response['timestamp_to_request']
         except requests.exceptions.ReadTimeout:
