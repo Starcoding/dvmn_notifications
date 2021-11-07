@@ -30,7 +30,7 @@ def main():
     while True:
         try:
             response_from_dvmn = requests.get(url, headers=headers, params=params)
-            request.raise_for_status()
+            response_from_dvmn.raise_for_status()
             data_from_response = response_from_dvmn.json()
             response_status = data_from_response['status']
             if response_status == "found":
@@ -51,7 +51,7 @@ def main():
                     следующему уроку!
                     Ссылка на работу: {lesson_url}'''))
             else:
-                params['timestamp'] = response['timestamp_to_request']
+                params['timestamp'] = data_from_response['timestamp_to_request']
         except requests.exceptions.ReadTimeout:
             continue
         except ConnectionError as ce:
