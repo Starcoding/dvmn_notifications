@@ -29,13 +29,13 @@ def main():
 
     while True:
         try:
-            request = requests.get(url, headers=headers, params=params)
+            response_from_dvmn = requests.get(url, headers=headers, params=params)
             request.raise_for_status()
-            response = request.json()
-            response_status = response['status']
+            data_from_response = response_from_dvmn.json()
+            response_status = data_from_response['status']
             if response_status == "found":
-                new_attemp = response['new_attempts'][0]
-                params['timestamp'] = response['last_attempt_timestamp']
+                new_attemp = data_from_response['new_attempts'][0]
+                params['timestamp'] = data_from_response['last_attempt_timestamp']
                 is_negative_response = new_attemp['is_negative']
                 lesson_title = new_attemp['lesson_title']
                 lesson_url = new_attemp['lesson_url']
